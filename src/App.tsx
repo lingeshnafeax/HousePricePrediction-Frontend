@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="flex flex-col gap-y-10 w-full">
+    <div className="flex w-full flex-col gap-y-7 sm:gap-0">
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/prediction" element={<Prediction />} />

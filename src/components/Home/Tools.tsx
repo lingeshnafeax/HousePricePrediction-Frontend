@@ -43,7 +43,7 @@ const Tools: React.FC = () => {
   return (
     <Card>
       <Subheading>Tools</Subheading>
-      <div className="flex justify-around sm:flex-row flex-col gap-10 text-center mt-5">
+      <div className="mt-5 flex flex-col justify-around gap-10 text-center sm:flex-row">
         {toolsData.map((tool: ToolData) => (
           <ToolDescription
             name={tool.name}

@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import FormLabel from "./FormLabel";
+import Subheading from "./Subheading";
 interface InputType {
   INT_SQFT: number[];
   DIST_MAINROAD: number[];
@@ -60,9 +61,10 @@ const PredictionForm = () => {
   };
 
   return (
-    <div className="text-xl flex gap-7 flex-col ">
+    <div className="flex flex-col gap-7 text-xl ">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col w-full justify-center gap-5">
+        <div className="flex w-full flex-col justify-center gap-7">
+          <Subheading>Enter the details</Subheading>
           <WrapperInputDiv>
             <FormLabel htmlFor={"sqft"}>Enter squarefeet (500-2500)</FormLabel>
             <input
@@ -340,13 +342,14 @@ const PredictionForm = () => {
 
           <input
             type="submit"
-            className=" bg-gray-300 mx-auto p-3 rounded-lg"
+            className=" mx-auto rounded-lg bg-gray-300 p-3"
           />
         </div>
       </form>
       {predicted != 0 && (
-        <p className=" bg-emerald-400 text-white p-2 rounded-lg text-center mx-auto mb-12 w-5/12">
-          The predicted price Rs.{predicted}
+        <p className=" mx-auto mb-12 rounded-lg bg-emerald-400 p-2 text-center text-white sm:w-5/12">
+          The predicted price{" "}
+          <span className="block sm:inline-block">Rs.{predicted}</span>
         </p>
       )}
     </div>

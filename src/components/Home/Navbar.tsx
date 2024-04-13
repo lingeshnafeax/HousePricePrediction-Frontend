@@ -1,10 +1,10 @@
 const Navbar = () => {
   return (
-    <div className="py-10 bg-gray-300 w-full flex items-center justify-center flex-col sm:gap-7 gap-5">
-      <p className=" sm:text-5xl text-center  font-semibold  text-3xl ">
+    <div className="flex w-full flex-col items-center justify-center gap-5 bg-gray-300 py-10 sm:gap-7">
+      <p className=" text-center text-3xl  font-semibold  sm:text-5xl ">
         Chennai House Price Prediction
       </p>
-      <p className=" sm:text-xl ml-7 text-base">by Lingesh & Dharunraj</p>
+      <p className=" ml-7 text-base sm:text-xl">by Lingesh & Dharunraj</p>
     </div>
   );
 };

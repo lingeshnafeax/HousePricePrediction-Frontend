@@ -37,7 +37,9 @@ const Prediction = () => {
   // }, []);
   return (
     <>
-      <h1 className=" bg-gray-300 w-full text-5xl text-center py-7 font-semibold">Prediction</h1>
+      <h1 className=" w-full bg-gray-300 py-7 text-center text-5xl font-semibold">
+        Prediction
+      </h1>
       <Card>
         <PredictionForm></PredictionForm>
       </Card>

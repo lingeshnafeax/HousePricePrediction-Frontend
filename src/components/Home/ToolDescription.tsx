@@ -24,21 +24,21 @@ const ToolDescription = (props: any) => {
 
   return (
     <div
-      className="relative flex flex-col justify-center items-center gap-y-5"
+      className="relative flex flex-col items-center justify-center gap-y-5"
       onClick={handleClick}
     >
       <img src={props.imgUrl} className="h-40 w-40" alt={props.name} />
-      <span className="p-4 bg-gray-300 rounded-md text-xl">{props.name}</span>
+      <span className="rounded-md bg-gray-300 p-4 text-xl">{props.name}</span>
       {isOpen && (
         <div
-          className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
           onClick={handleBackgroundClick} // Add click handler to the entire popup
         >
-          <div className="bg-white rounded-md p-4 text-xl flex items-center justify-center flex-col">
+          <div className="flex flex-col items-center justify-center rounded-md bg-white p-4 sm:text-xl">
             {props.desc}
             <button
               onClick={handleClose}
-              className="mt-4 p-2 bg-blue-500 text-white rounded-md block "
+              className="mt-4 block rounded-md bg-blue-500 p-2 text-white "
             >
               Close
             </button>
