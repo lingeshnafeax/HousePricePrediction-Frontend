@@ -1,0 +1,347 @@
+import WrapperInputDiv from "./WrapperInputDiv";
+import ErrorMessage from "./ErrorMessage";
+import axios from "axios";
+import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import FormLabel from "./FormLabel";
+interface Inputype {
+  INT_SQFT: number[];
+  DIST_MAINROAD: number[];
+  N_BEDROOM: number[];
+  N_BATHROOM: number[];
+  PARK_FACIL: number[];
+  QS_ROOMS: number[];
+  QS_BATHROOM: number[];
+  QS_BEDROOM: number[];
+  QS_OVERALL: number[];
+  REG_FEE: number[];
+  COMMIS: number[];
+  AREA: string[];
+  SALE_COND: string[];
+  BUILDTYPE: string[];
+  UTILITY_AVAIL: string[];
+  STREET: string[];
+  MZZONE: string[];
+}
+
+const PredictionForm = () => {
+  const [predicted, setPredicted] = useState(0);
+  const setPredictedValue = (price: any) => {
+    setPredicted(price);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, touchedFields },
+  } = useForm<Inputype>();
+  // const onSubmit = (data: Inputype) => {
+  //   console.log(data);
+  // };
+  const onSubmit: SubmitHandler<Inputype> = async (data: Inputype) => {
+    for (let key: any in data) {
+      data[key] = [data[key]];
+    }
+    const url = "https://house-price-backend-ix4u.onrender.com";
+    try {
+      const response = await axios.post(url, data);
+      setPredictedValue(response.data.prediction);
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
+  return (
+    <div className="text-xl flex gap-7 flex-col ">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col w-full justify-center gap-5">
+          <WrapperInputDiv>
+            <FormLabel htmlFor={"sqft"}>Enter squarefeet (500-2500)</FormLabel>
+            <input
+              id="sqft"
+              type="number"
+              {...register("INT_SQFT", {
+                valueAsNumber: true,
+                min: { value: 500, message: "Value must be greater than 500" },
+                max: { value: 2500, message: "Value must be lesser than 2500" },
+                required: "Enter value between 500 and 2500",
+              })}
+              placeholder="Square Feet"
+            />
+            {touchedFields.INT_SQFT && errors.INT_SQFT && (
+              <ErrorMessage>{errors.INT_SQFT.message}</ErrorMessage>
+            )}
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor={"dist"}>
+              Enter distance from mainroad (0-200)
+            </FormLabel>
+            <input
+              id="dist"
+              type="number"
+              {...register("DIST_MAINROAD", {
+                valueAsNumber: true,
+                min: { value: 0, message: "Value must be greater than 0" },
+                max: { value: 200, message: "Value must be lesser than 200" },
+                required: "Enter value between 0 and 200",
+              })}
+              placeholder="Distance from Main Road"
+            />
+            {touchedFields.DIST_MAINROAD && errors.DIST_MAINROAD && (
+              <ErrorMessage>{errors.DIST_MAINROAD.message}</ErrorMessage>
+            )}
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor="n_bedroom">
+              Enter number of bedrooms (0-4)
+            </FormLabel>
+            <input
+              id="n_bedroom"
+              type="number"
+              {...register("N_BEDROOM", {
+                valueAsNumber: true,
+                min: { value: 0, message: "Enter value above zero" },
+                max: { value: 4, message: "Enter value above 4" },
+                required: "Enter value between 0 and 4",
+              })}
+              placeholder="No of bedrooms"
+            />
+            {touchedFields.N_BEDROOM && errors.N_BEDROOM && (
+              <ErrorMessage>{errors.N_BEDROOM.message}</ErrorMessage>
+            )}
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor={"n_bathroom"}>
+              Enter no of bathroom (0-4)
+            </FormLabel>
+            <input
+              id="n_bathroom"
+              type="number"
+              {...register("N_BATHROOM", {
+                valueAsNumber: true,
+                min: { value: 0, message: "Enter value above zero" },
+                max: { value: 4, message: "Enter value above 4" },
+                required: "Enter value between 0 and 4",
+              })}
+              placeholder="No of bathrooms"
+            />
+            {touchedFields.N_BATHROOM && errors.N_BATHROOM && (
+              <ErrorMessage>{errors.N_BATHROOM.message}</ErrorMessage>
+            )}
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor={"parking"}>Select parking facility </FormLabel>
+            <select
+              id="parking"
+              {...register("PARK_FACIL", { valueAsNumber: true })}
+            >
+              <option value={1}>YES</option>
+              <option value={0}>NO</option>
+            </select>
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor="qs_rooms">
+              Enter quality of rooms (2-5)
+            </FormLabel>
+            <input
+              id="qs_rooms"
+              type="number"
+              {...register("QS_ROOMS", {
+                valueAsNumber: true,
+                min: { value: 2, message: "Enter value above 2" },
+                max: { value: 5, message: "Enter value below 5" },
+                required: "Enter value between 2 and 5",
+              })}
+              placeholder="Quality of rooms"
+            />
+            {touchedFields.QS_ROOMS && errors.QS_ROOMS && (
+              <ErrorMessage>{errors.QS_ROOMS.message}</ErrorMessage>
+            )}
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor="qs_bathroom">
+              Enter the quality of bathrooms (2-5)
+            </FormLabel>
+            <input
+              id="qs_bathroom"
+              type="number"
+              {...register("QS_BATHROOM", {
+                valueAsNumber: true,
+                min: { value: 2, message: "Enter value above 2" },
+                max: { value: 5, message: "Enter value below 5" },
+                required: "Enter value between 2 and 5",
+              })}
+              placeholder="Quality of bathroom"
+            />
+            {touchedFields.QS_BATHROOM && errors.QS_BATHROOM && (
+              <ErrorMessage>{errors.QS_BATHROOM.message}</ErrorMessage>
+            )}
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor="qs_bedroom">
+              Enter the quality of bedrooms (2-5)
+            </FormLabel>
+            <input
+              id="qs_bedroom"
+              type="number"
+              {...register("QS_BEDROOM", {
+                valueAsNumber: true,
+                min: { value: 2, message: "Enter value above 2" },
+                max: { value: 5, message: "Enter value below 5" },
+                required: "Enter value between 2 and 5",
+              })}
+              placeholder="Quality of bedroom"
+            />
+            {touchedFields.QS_BEDROOM && errors.QS_BEDROOM && (
+              <ErrorMessage>{errors.QS_BEDROOM.message}</ErrorMessage>
+            )}
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor="qs_overall">
+              Enter overall quality (2-5)
+            </FormLabel>
+            <input
+              id="qs_overall"
+              type="number"
+              {...register("QS_OVERALL", {
+                valueAsNumber: true,
+                min: { value: 2, message: "Enter value above 2" },
+                max: { value: 5, message: "Enter value below 5" },
+                required: "Enter value between 2 and 5",
+              })}
+              placeholder="Overall Quality"
+            />
+            {touchedFields.QS_OVERALL && errors.QS_OVERALL && (
+              <ErrorMessage>{errors.QS_OVERALL.message}</ErrorMessage>
+            )}
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor="reg">
+              Enter registration fees (70k - 1 million)
+            </FormLabel>
+            <input
+              id="reg"
+              type="number"
+              {...register("REG_FEE", {
+                valueAsNumber: true,
+                min: {
+                  value: 70000,
+                  message: "Enter value greater than 70000",
+                },
+                max: {
+                  value: 1000000,
+                  message: "Enter value less than 1000000",
+                },
+                required: "Enter value between 70k to 1 million",
+              })}
+              placeholder="Registration fee"
+            />
+            {touchedFields.REG_FEE && errors.REG_FEE && (
+              <ErrorMessage>{errors.REG_FEE.message}</ErrorMessage>
+            )}
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor="commis">
+              Enter commission amount (5k to 500k)
+            </FormLabel>
+            <input
+              id="commis"
+              type="number"
+              {...register("COMMIS", {
+                valueAsNumber: true,
+                min: { value: 5000, message: "Enter value greater than 5000" },
+                max: {
+                  value: 500000,
+                  message: "Enter value greater than 500000",
+                },
+                required: "Enter value between 5k to 500k ",
+              })}
+              placeholder="Commission"
+            />
+            {touchedFields.COMMIS && errors.COMMIS && (
+              <ErrorMessage>{errors.COMMIS.message}</ErrorMessage>
+            )}
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor="area">Select an area</FormLabel>
+            <select id="area" {...register("AREA")} defaultValue={""}>
+              <option value="">Select an area</option>
+              <option value="Karapakam">Karapakam</option>
+              <option value="Adyar">Adyar</option>
+              <option value="Velachery">Velachery</option>
+              <option value="Chrompet">Chrompet</option>
+              <option value="KK Nagar">KK Nagar</option>
+              <option value="T Nagar">T Nagar</option>
+              <option value="Anna Nagar">Anna Nagar</option>
+            </select>
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor="sales">Select a sales condition</FormLabel>
+            <select id="sales" {...register("SALE_COND")} defaultValue={""}>
+              <option value="">Select an sales conditon</option>
+              <option value="AbNormal">AbNormal</option>
+              <option value="Family">Family</option>
+              <option value="Partial">Partial</option>
+              <option value="AdjLand">AdjLand</option>
+              <option value="Normal Sale">Normal Sale</option>
+            </select>
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor="buildtype">Select a buildtype</FormLabel>
+            <select id="buildtype" {...register("BUILDTYPE")} defaultValue={""}>
+              <option value="">Select a buildtype</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Others">Others</option>
+              <option value="House">House</option>
+            </select>
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor="utility">Select an utility</FormLabel>
+            <select
+              id="utility"
+              {...register("UTILITY_AVAIL")}
+              defaultValue={""}
+            >
+              <option value="">Select utility available</option>
+              <option value="All Pub">All Pub</option>
+              <option value="ELO">ELO</option>
+              <option value="NoSeWa">NOSeWa</option>
+            </select>
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor="street">Select type of street</FormLabel>
+            <select id="street" {...register("STREET")} defaultValue={""}>
+              <option value="">Select street</option>
+              <option value="Paved">Paved</option>
+              <option value="Gravel">Gravel</option>
+              <option value="No Access">No Access</option>
+            </select>
+          </WrapperInputDiv>
+          <WrapperInputDiv>
+            <FormLabel htmlFor="zone">Select type of zone</FormLabel>
+            <select id="zone" {...register("MZZONE")} defaultValue={""}>
+              <option value="">Select zone</option>
+              <option value="A">A</option>
+              <option value="RL">RL</option>
+              <option value="I">I</option>
+              <option value="C">C</option>
+              <option value="RH">RH</option>
+              <option value="RM">RM</option>
+            </select>
+          </WrapperInputDiv>
+
+          <input
+            type="submit"
+            className=" bg-gray-300 mx-auto p-3 rounded-lg"
+          />
+        </div>
+      </form>
+      {predicted != 0 && (
+        <p className=" bg-emerald-400 text-white p-2 rounded-lg text-center mx-auto mb-12 w-5/12">
+          The predicted price Rs.{predicted}
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default PredictionForm;
