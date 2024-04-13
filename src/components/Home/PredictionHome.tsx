@@ -10,7 +10,7 @@ const PredictionHome = () => {
       <Text>Make prediction using Flask API</Text>
       <Link
         to="/prediction"
-        className="mb-10 self-center rounded-lg bg-gray-300 px-8 py-4 text-xl"
+        className="mb-10 self-center rounded-lg bg-black px-8 py-4 text-xl text-white"
       >
         Predict
       </Link>

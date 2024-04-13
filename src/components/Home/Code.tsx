@@ -10,7 +10,7 @@ const Code = () => {
       <a
         href="https://nbviewer.org/github/lingeshnafeax/DataScience/blob/master/Chennai%20House%20Price%20Prediction/ChennaiHousePricePrediction.ipynb"
         target="_blank"
-        className=" bg-gray-300 p-4 text-xl rounded-md w-36 mx-auto text-center"
+        className=" bg-black text-white p-4 text-xl rounded-md w- mx-auto text-center"
       >
         Link
       </a>

@@ -37,7 +37,7 @@ const Prediction = () => {
   // }, []);
   return (
     <>
-      <h1 className=" w-full bg-gray-300 py-7 text-center text-5xl font-semibold">
+      <h1 className=" w-full bg-black py-7 text-center text-5xl font-semibold text-white">
         Prediction
       </h1>
       <Card>

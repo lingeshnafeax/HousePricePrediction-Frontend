@@ -28,7 +28,9 @@ const ToolDescription = (props: any) => {
       onClick={handleClick}
     >
       <img src={props.imgUrl} className="h-40 w-40" alt={props.name} />
-      <span className="rounded-md bg-gray-300 p-4 text-xl">{props.name}</span>
+      <span className="rounded-md bg-black p-4 text-xl text-white">
+        {props.name}
+      </span>
       {isOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"

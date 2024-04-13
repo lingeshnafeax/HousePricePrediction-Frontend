@@ -1,6 +1,6 @@
 const Points = (props: any) => {
   return (
-    <div className="flex items-center gap-3 py-4 sm:text-xl">
+    <div className="flex items-center gap-4 py-4 sm:text-xl">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"

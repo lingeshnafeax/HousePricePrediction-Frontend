@@ -6,7 +6,7 @@ const Description = () => {
   return (
     <Card>
       <Subheading>Description</Subheading>
-      <Text className="bg-gray-300 p-10">
+      <Text className=" border p-10 shadow-md transition duration-300 ease-in-out  hover:scale-105">
         The aim of this project is to develop a machine learning model that
         predicts house prices in Chennai, India. With the increasing demand for
         real estate in Chennai, accurate price prediction can assist both buyers

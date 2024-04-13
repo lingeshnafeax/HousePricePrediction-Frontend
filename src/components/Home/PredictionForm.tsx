@@ -64,10 +64,18 @@ const PredictionForm = () => {
     <div className="flex flex-col gap-7 text-xl ">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex w-full flex-col justify-center gap-7">
-          <Subheading>Enter the details</Subheading>
+          <Subheading className={"bg-white text-black"}>
+            Enter the details
+          </Subheading>
           <WrapperInputDiv>
-            <FormLabel htmlFor={"sqft"}>Enter squarefeet (500-2500)</FormLabel>
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor={"sqft"}
+            >
+              Enter squarefeet (500-2500)
+            </FormLabel>
             <input
+              className="rounded-lg  p-3 "
               id="sqft"
               type="number"
               {...register("INT_SQFT", {
@@ -83,11 +91,15 @@ const PredictionForm = () => {
             )}
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor={"dist"}>
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor={"dist"}
+            >
               Enter distance from mainroad (0-200)
             </FormLabel>
             <input
               id="dist"
+              className="rounded-lg  p-3 "
               type="number"
               {...register("DIST_MAINROAD", {
                 valueAsNumber: true,
@@ -102,11 +114,15 @@ const PredictionForm = () => {
             )}
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor="n_bedroom">
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor="n_bedroom"
+            >
               Enter number of bedrooms (0-4)
             </FormLabel>
             <input
               id="n_bedroom"
+              className="rounded-lg  p-3 "
               type="number"
               {...register("N_BEDROOM", {
                 valueAsNumber: true,
@@ -121,11 +137,15 @@ const PredictionForm = () => {
             )}
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor={"n_bathroom"}>
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor={"n_bathroom"}
+            >
               Enter no of bathroom (0-4)
             </FormLabel>
             <input
               id="n_bathroom"
+              className="rounded-lg  p-3 "
               type="number"
               {...register("N_BATHROOM", {
                 valueAsNumber: true,
@@ -140,8 +160,14 @@ const PredictionForm = () => {
             )}
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor={"parking"}>Select parking facility </FormLabel>
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor={"parking"}
+            >
+              Select parking facility{" "}
+            </FormLabel>
             <select
+              className="rounded-lg  p-3 "
               id="parking"
               {...register("PARK_FACIL", { valueAsNumber: true })}
             >
@@ -150,12 +176,16 @@ const PredictionForm = () => {
             </select>
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor="qs_rooms">
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor="qs_rooms"
+            >
               Enter quality of rooms (2-5)
             </FormLabel>
             <input
               id="qs_rooms"
               type="number"
+              className="rounded-lg  p-3 "
               {...register("QS_ROOMS", {
                 valueAsNumber: true,
                 min: { value: 2, message: "Enter value above 2" },
@@ -169,11 +199,15 @@ const PredictionForm = () => {
             )}
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor="qs_bathroom">
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor="qs_bathroom"
+            >
               Enter the quality of bathrooms (2-5)
             </FormLabel>
             <input
               id="qs_bathroom"
+              className="rounded-lg  p-3 "
               type="number"
               {...register("QS_BATHROOM", {
                 valueAsNumber: true,
@@ -188,11 +222,15 @@ const PredictionForm = () => {
             )}
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor="qs_bedroom">
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor="qs_bedroom"
+            >
               Enter the quality of bedrooms (2-5)
             </FormLabel>
             <input
               id="qs_bedroom"
+              className="rounded-lg  p-3 "
               type="number"
               {...register("QS_BEDROOM", {
                 valueAsNumber: true,
@@ -207,11 +245,15 @@ const PredictionForm = () => {
             )}
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor="qs_overall">
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor="qs_overall"
+            >
               Enter overall quality (2-5)
             </FormLabel>
             <input
               id="qs_overall"
+              className="rounded-lg  p-3 "
               type="number"
               {...register("QS_OVERALL", {
                 valueAsNumber: true,
@@ -226,10 +268,14 @@ const PredictionForm = () => {
             )}
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor="reg">
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor="reg"
+            >
               Enter registration fees (70k - 1 million)
             </FormLabel>
             <input
+              className="rounded-lg  p-3 "
               id="reg"
               type="number"
               {...register("REG_FEE", {
@@ -251,11 +297,15 @@ const PredictionForm = () => {
             )}
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor="commis">
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor="commis"
+            >
               Enter commission amount (5k to 500k)
             </FormLabel>
             <input
               id="commis"
+              className="rounded-lg  p-3 "
               type="number"
               {...register("COMMIS", {
                 valueAsNumber: true,
@@ -273,8 +323,18 @@ const PredictionForm = () => {
             )}
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor="area">Select an area</FormLabel>
-            <select id="area" {...register("AREA")} defaultValue={""}>
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor="area"
+            >
+              Select an area
+            </FormLabel>
+            <select
+              className="rounded-lg  p-3 "
+              id="area"
+              {...register("AREA")}
+              defaultValue={""}
+            >
               <option value="">Select an area</option>
               <option value="Karapakam">Karapakam</option>
               <option value="Adyar">Adyar</option>
@@ -286,8 +346,18 @@ const PredictionForm = () => {
             </select>
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor="sales">Select a sales condition</FormLabel>
-            <select id="sales" {...register("SALE_COND")} defaultValue={""}>
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor="sales"
+            >
+              Select a sales condition
+            </FormLabel>
+            <select
+              className="rounded-lg  p-3 "
+              id="sales"
+              {...register("SALE_COND")}
+              defaultValue={""}
+            >
               <option value="">Select an sales conditon</option>
               <option value="AbNormal">AbNormal</option>
               <option value="Family">Family</option>
@@ -297,8 +367,18 @@ const PredictionForm = () => {
             </select>
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor="buildtype">Select a buildtype</FormLabel>
-            <select id="buildtype" {...register("BUILDTYPE")} defaultValue={""}>
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor="buildtype"
+            >
+              Select a buildtype
+            </FormLabel>
+            <select
+              className="rounded-lg  p-3 "
+              id="buildtype"
+              {...register("BUILDTYPE")}
+              defaultValue={""}
+            >
               <option value="">Select a buildtype</option>
               <option value="Commercial">Commercial</option>
               <option value="Others">Others</option>
@@ -306,8 +386,14 @@ const PredictionForm = () => {
             </select>
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor="utility">Select an utility</FormLabel>
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor="utility"
+            >
+              Select an utility
+            </FormLabel>
             <select
+              className="rounded-lg  p-3 "
               id="utility"
               {...register("UTILITY_AVAIL")}
               defaultValue={""}
@@ -319,8 +405,18 @@ const PredictionForm = () => {
             </select>
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor="street">Select type of street</FormLabel>
-            <select id="street" {...register("STREET")} defaultValue={""}>
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor="street"
+            >
+              Select type of street
+            </FormLabel>
+            <select
+              className="rounded-lg  p-3 "
+              id="street"
+              {...register("STREET")}
+              defaultValue={""}
+            >
               <option value="">Select street</option>
               <option value="Paved">Paved</option>
               <option value="Gravel">Gravel</option>
@@ -328,8 +424,18 @@ const PredictionForm = () => {
             </select>
           </WrapperInputDiv>
           <WrapperInputDiv>
-            <FormLabel htmlFor="zone">Select type of zone</FormLabel>
-            <select id="zone" {...register("MZZONE")} defaultValue={""}>
+            <FormLabel
+              className="rounded-md bg-black p-4 text-white"
+              htmlFor="zone"
+            >
+              Select type of zone
+            </FormLabel>
+            <select
+              className="rounded-lg  p-3 "
+              id="zone"
+              {...register("MZZONE")}
+              defaultValue={""}
+            >
               <option value="">Select zone</option>
               <option value="A">A</option>
               <option value="RL">RL</option>
@@ -342,7 +448,7 @@ const PredictionForm = () => {
 
           <input
             type="submit"
-            className=" mx-auto rounded-lg bg-gray-300 p-3"
+            className=" mx-auto mb-12 w-full rounded-lg  py-4 text-white bg-black"
           />
         </div>
       </form>
