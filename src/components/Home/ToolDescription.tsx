@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ToolDescription = (props: any) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +11,13 @@ const ToolDescription = (props: any) => {
     setIsOpen(false);
   };
 
-  const handleBackgroundClick = (event) => {
+  const handleBackgroundClick = (event: any) => {
     // Check if the clicked element is not the close button or the popup itself
-    if (event.target !== event.currentTarget && event.target.className !== "mt-4 p-2 bg-blue-500 text-white rounded-md block ") {
+    if (
+      event.target !== event.currentTarget &&
+      event.target.className !==
+        "mt-4 p-2 bg-blue-500 text-white rounded-md block "
+    ) {
       setIsOpen(false); // Close the popup if clicked outside
     }
   };
@@ -32,7 +36,10 @@ const ToolDescription = (props: any) => {
         >
           <div className="bg-white rounded-md p-4 text-xl flex items-center justify-center flex-col">
             {props.desc}
-            <button onClick={handleClose} className="mt-4 p-2 bg-blue-500 text-white rounded-md block ">
+            <button
+              onClick={handleClose}
+              className="mt-4 p-2 bg-blue-500 text-white rounded-md block "
+            >
               Close
             </button>
           </div>

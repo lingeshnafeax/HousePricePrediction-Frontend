@@ -1,7 +1,6 @@
 import Card from "./Card";
 import Subheading from "./Subheading";
 import ToolDescription from "./ToolDescription";
-import ToolHeading from "./ToolDescription";
 
 interface ToolData {
   name: string;

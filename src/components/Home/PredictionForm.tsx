@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import FormLabel from "./FormLabel";
-interface Inputype {
+interface InputType {
   INT_SQFT: number[];
   DIST_MAINROAD: number[];
   N_BEDROOM: number[];
@@ -34,22 +34,31 @@ const PredictionForm = () => {
     register,
     handleSubmit,
     formState: { errors, touchedFields },
-  } = useForm<Inputype>();
+  } = useForm<InputType>();
   // const onSubmit = (data: Inputype) => {
   //   console.log(data);
   // };
-  const onSubmit: SubmitHandler<Inputype> = async (data: Inputype) => {
-    for (let key: any in data) {
-      data[key] = [data[key]];
+  const onSubmit: SubmitHandler<InputType> = async (formData: InputType) => {
+    // Convert each property of formData into an array if not already one
+    const formDataForSubmission: InputType = {} as InputType;
+    for (let key in formData) {
+      if (formData.hasOwnProperty(key)) {
+        const formField = formData[key as keyof InputType];
+        if (!Array.isArray(formField)) {
+          formDataForSubmission[key as keyof InputType] = [formField]; // Ensure it's always an array
+        }
+      }
     }
+
     const url = "https://house-price-backend-ix4u.onrender.com";
     try {
-      const response = await axios.post(url, data);
+      const response = await axios.post(url, formDataForSubmission);
       setPredictedValue(response.data.prediction);
     } catch (error) {
       console.log("Error", error);
     }
   };
+
   return (
     <div className="text-xl flex gap-7 flex-col ">
       <form onSubmit={handleSubmit(onSubmit)}>
