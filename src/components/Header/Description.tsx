@@ -1,6 +1,6 @@
-import Card from "./Card";
-import Subheading from "./Subheading";
-import Text from "./Text";
+import Card from "../UI/Card";
+import Subheading from "../UI/Subheading";
+import Text from "../UI/Text";
 
 const Description = () => {
   return (

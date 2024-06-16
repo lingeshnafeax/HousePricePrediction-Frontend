@@ -1,5 +1,5 @@
-import Card from "./Card";
-import Subheading from "./Subheading";
+import Card from "../UI/Card";
+import Subheading from "../UI/Subheading";
 import ToolDescription from "./ToolDescription";
 import Numpy from "/src/assets/numpy.png";
 import Pandas from "/src/assets/pandas.png";

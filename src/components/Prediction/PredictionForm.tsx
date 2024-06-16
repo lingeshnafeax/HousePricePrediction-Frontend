@@ -1,10 +1,10 @@
-import WrapperInputDiv from "./WrapperInputDiv";
-import ErrorMessage from "./ErrorMessage";
+import WrapperInputDiv from "../UI/WrapperInputDiv";
+import ErrorMessage from "../UI/ErrorMessage";
 import axios from "axios";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import FormLabel from "./FormLabel";
-import Subheading from "./Subheading";
+import FormLabel from "../UI/FormLabel";
+import Subheading from "../UI/Subheading";
 interface InputType {
   INT_SQFT: number[];
   DIST_MAINROAD: number[];
@@ -64,7 +64,7 @@ const PredictionForm = () => {
     <div className="flex flex-col gap-7 text-xl ">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex w-full flex-col justify-center gap-7">
-          <Subheading className={"bg-white text-black"}>
+          <Subheading className="!bg-white !text-black">
             Enter the details
           </Subheading>
           <WrapperInputDiv>
@@ -448,7 +448,7 @@ const PredictionForm = () => {
 
           <input
             type="submit"
-            className=" mx-auto mb-12 w-full rounded-lg  py-4 text-white bg-black"
+            className=" mx-auto mb-12 w-full rounded-lg  bg-black py-4 text-white"
           />
         </div>
       </form>

@@ -1,9 +1,9 @@
-import Description from "./Description";
-import Navbar from "./Navbar";
-import Steps from "./Steps";
-import Tools from "./Tools";
-import PredictionHome from "./PredictionHome";
-import Code from "./Code";
+import Description from "../Header/Description";
+import Navbar from "../Header/Navbar";
+import Steps from "../Points/Steps";
+import Tools from "../Tools/Tools";
+import PredictionHome from "../Prediction/PredictionHome";
+import Code from "../Code/Code";
 
 const Home = () => {
   return (

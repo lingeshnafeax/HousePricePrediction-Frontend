@@ -1,6 +1,6 @@
-import Card from "./Card";
+import Card from "../UI/Card";
 import Points from "./Points";
-import Subheading from "./Subheading";
+import Subheading from "../UI/Subheading";
 
 const Steps = () => {
   const steps: String[] = [

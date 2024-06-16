@@ -1,5 +1,5 @@
 import Home from "./components/Home/Home";
-import Prediction from "./components/Home/Prediction";
+import Prediction from "./components/Prediction/Prediction";
 
 import { Routes, Route } from "react-router-dom";
 
