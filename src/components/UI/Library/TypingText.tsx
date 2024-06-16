@@ -1,7 +1,16 @@
+// src/TypingMachine.tsx
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const TypingMachine = ({
+interface TypingMachineProps {
+  text: string;
+  speed?: number;
+  fontSize?: string;
+  color?: string;
+  fontStyle?: string;
+}
+
+const TypingMachine: React.FC<TypingMachineProps> = ({
   text,
   speed = 20,
   fontSize = "text-lg",
@@ -59,9 +68,9 @@ const TypingMachine = ({
   );
 };
 
-const ExampleUsageTypingMachine = () => {
+const ExampleUsageTypingMachine: React.FC = () => {
   return (
-    <div className="flex  flex-col items-center justify-center text-center">
+    <div className="flex flex-col items-center justify-center text-center">
       <TypingMachine
         text="Lingesh"
         speed={70}
@@ -73,12 +82,12 @@ const ExampleUsageTypingMachine = () => {
   );
 };
 
-function TypingText() {
+const TypingText: React.FC = () => {
   return (
     <div className="text-center">
       <ExampleUsageTypingMachine />
     </div>
   );
-}
+};
 
 export default TypingText;

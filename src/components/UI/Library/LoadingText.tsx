@@ -1,13 +1,17 @@
-// src/AnimatedText.js
+// src/AnimatedText.tsx
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, ReactNode } from "react";
 
-const LoadingText = ({ children }) => {
+interface LoadingTextProps {
+  children: ReactNode;
+}
+
+const LoadingText: React.FC<LoadingTextProps> = ({ children }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   const containerVariants = {
-    hidden: { width: "50%" },
+    hidden: { width: "100%" },
     visible: {
       width: 0,
       transition: {
@@ -19,29 +23,22 @@ const LoadingText = ({ children }) => {
 
   return (
     <div ref={ref} className="relative inline-block overflow-hidden">
-      <div className="relative text-transparent">{children}</div>{" "}
+      <div className="relative text-transparent">{children}</div>
       {/* Ensure text is initially hidden */}
       <motion.div
         className="absolute bottom-0 left-0 top-0 z-10 bg-white"
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={containerVariants}
-        style={{ width: "50%" }}
+        style={{ width: "100%" }}
       />
-      <motion.div
-        className="absolute bottom-0 right-0 top-0 z-10 bg-white"
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={containerVariants}
-        style={{ width: "50%" }}
-      />
-      <div className="absolute inset-0">{children}</div>{" "}
+      <div className="absolute inset-0">{children}</div>
       {/* Ensure text is visible after animation */}
     </div>
   );
 };
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="py-3 text-center">
       <LoadingText>
